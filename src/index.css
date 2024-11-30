@@ -220,8 +220,7 @@ body {
 .three-body__dot:nth-child(2)::after {
   bottom: 0;
   left: 0;
-  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15)
-    ease-in-out;
+  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
 }
 
 .three-body__dot:nth-child(3) {
@@ -234,6 +233,28 @@ body {
   top: 0;
   left: 0;
   animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+#next-video:not(.visible)::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* Covers the entire video element */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  backdrop-filter: blur(10px); /* Optional blur effect for a smoother transition */
+  z-index: 1; /* Ensures the overlay is above the video */
+}
+
+#next-video:not(.visible) {
+  position: relative; /* Ensure positioning context for the pseudo-element */
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 @keyframes spin78236 {
