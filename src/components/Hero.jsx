@@ -131,7 +131,7 @@ const Hero = () => {
             playsInline
             id='next-video'
             preload='auto'
-            poster={`images/hero-${currentIndex}.mp4`}
+            poster={`videos/hero-${currentIndex}.mp4`}
             className={`absolute-center ${
               hasClicked ? "visible" : "invisible"
             } absolute z-20 size-64 object-cover object-center`}
