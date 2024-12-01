@@ -1,7 +1,6 @@
+import { useGSAP } from "@gsap/react"; // Assuming this is a valid custom hook
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-
 import AnimatedTitle from "./AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -29,19 +28,16 @@ const About = () => {
   return (
     <div id='about' className='min-h-screen w-screen'>
       <div className='relative mb-8 mt-36 flex flex-col items-center gap-5'>
-        <p className='font-general text-sm uppercase md:text-[10px]'>Welcome to Zentry</p>
+        <h2 className='font-general text-sm uppercase md:text-[10px]'>Welcome to Zentry</h2>
 
         <AnimatedTitle
-          title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
+          title="Disc<b>o</b>ver the world's <br /> l<b>a</b>rgest shared adventure"
           containerClass='mt-5 !text-black text-center'
         />
 
         <div className='about-subtext'>
-          <p>The Game of Games begins—your life, now an epic MMORPG</p>
-          <p>
-            Zentry unites every player from countless games and platforms, both digital and physical, into a unified
-            Play Economy
-          </p>
+          <p>The Game of Games begins-your life, now an epic MMORPG</p>
+          <p>Zentry unites every player from countless games and platforms</p>
         </div>
       </div>
 
