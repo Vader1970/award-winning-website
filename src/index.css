@@ -240,7 +240,7 @@ body {
   position: absolute;
   inset: 0; /* Covers the entire video element */
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-  background-color: #1a202c;
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px); /* Optional blur effect for a smoother transition */
   z-index: 1; /* Ensures the overlay is above the video */
 }
