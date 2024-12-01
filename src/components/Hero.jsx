@@ -87,7 +87,6 @@ const Hero = () => {
     <div className='relative h-dvh w-screen overflow-x-hidden'>
       {loading && (
         <div className='flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50'>
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className='three-body'>
             <div className='three-body__dot'></div>
             <div className='three-body__dot'></div>
@@ -109,6 +108,8 @@ const Hero = () => {
                   src={getVideoSrc((currentIndex % totalVideos) + 1)}
                   loop
                   muted
+                  autoPlay
+                  playsInline
                   id='current-video'
                   className='size-64 origin-center scale-150 object-cover object-center'
                   onLoadedData={handleVideoLoad}
@@ -122,9 +123,11 @@ const Hero = () => {
             src={getVideoSrc(currentIndex)}
             loop
             muted
+            autoPlay
+            playsInline
             id='next-video'
             preload='auto'
-            poster={`images/hero-${currentIndex}.jpg`} // Add poster for the initial frame
+            poster={`images/hero-${currentIndex}.jpg`} // Add poster for the initial
             className={`absolute-center ${
               hasClicked ? "visible" : "invisible"
             } absolute z-20 size-64 object-cover object-center`}
@@ -137,6 +140,7 @@ const Hero = () => {
           <video
             src={getVideoSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
             autoPlay
+            playsInline
             loop
             muted
             className='absolute left-0 top-0 size-full object-cover object-center'
