@@ -25,7 +25,11 @@ const Hero = () => {
 
   useEffect(() => {
     if (loadedVideos === totalVideos - 1) {
-      setLoading(false);
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 500); // Add a small delay to ensure smooth transition
+
+      return () => clearTimeout(timeout); // Cleanup timeout
     }
   }, [loadedVideos]);
 
@@ -127,11 +131,11 @@ const Hero = () => {
             playsInline
             id='next-video'
             preload='auto'
-            poster={`images/hero-${currentIndex}.jpg`} // Add poster for the initial
+            poster={`images/hero-${currentIndex}.jpg`}
             className={`absolute-center ${
               hasClicked ? "visible" : "invisible"
             } absolute z-20 size-64 object-cover object-center`}
-            onLoadedData={() => {
+            onCanPlayThrough={() => {
               handleVideoLoad();
               nextVdRef.current.play();
               gsap.set("#next-video", { visibility: "visible" });

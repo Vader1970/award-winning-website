@@ -7,10 +7,14 @@ export const VideoPreview = ({ children }) => {
   const sectionRef = useRef(null); // Reference for the container section
   const contentRef = useRef(null); // Reference for the inner content
 
+  // Detect if the device is mobile
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   // Handles mouse movement over the container
   const handleMouseMove = ({ clientX, clientY, currentTarget }) => {
-    const rect = currentTarget.getBoundingClientRect(); // Get dimensions of the container
+    if (isMobile) return; // Skip hover effects on mobile
 
+    const rect = currentTarget.getBoundingClientRect(); // Get dimensions of the container
     const xOffset = clientX - (rect.left + rect.width / 2); // Calculate X offset
     const yOffset = clientY - (rect.top + rect.height / 2); // Calculate Y offset
 
@@ -37,8 +41,8 @@ export const VideoPreview = ({ children }) => {
   };
 
   useEffect(() => {
-    // Reset the position of the content when hover ends
-    if (!isHovering) {
+    // Reset the position of the content when hover ends or on mobile
+    if (!isHovering || isMobile) {
       gsap.to(sectionRef.current, {
         x: 0,
         y: 0,
@@ -55,14 +59,14 @@ export const VideoPreview = ({ children }) => {
         ease: "power1.out",
       });
     }
-  }, [isHovering]);
+  }, [isHovering, isMobile]);
 
   return (
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      onMouseEnter={() => !isMobile && setIsHovering(true)}
+      onMouseLeave={() => !isMobile && setIsHovering(false)}
       className='absolute z-50 size-full overflow-hidden rounded-lg'
       style={{
         perspective: "500px",
